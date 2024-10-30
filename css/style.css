@@ -1,5 +1,5 @@
 :root {
-  --color-primary: #2b2d42;
+  --color-primary: #2631aa;
   --color-secondary: #8d99ae;
   --color-light: #edf2f4;
   --color-accent: #d90429;
@@ -352,6 +352,88 @@ body {
   margin-bottom: 0.5rem;
   color: var(--color-accent);
 }
+
+/* Instagram Feed Section */
+.instagram-feed {
+  padding: 5rem 0;
+  background-color: var(--color-light);
+}
+
+.instagram-feed__title {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--color-primary);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.instagram-feed__gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.instagram-feed__item {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.instagram-feed__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.instagram-feed__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.instagram-feed__icon {
+  font-size: 2rem;
+  color: white;
+}
+
+/* Hover Effects */
+.instagram-feed__item:hover .instagram-feed__image {
+  transform: scale(1.05);
+}
+
+.instagram-feed__item:hover .instagram-feed__overlay {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .instagram-feed__gallery {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .instagram-feed__gallery {
+      grid-template-columns: 1fr;
+  }
+}
+
 
 /* Contact Section */
 .contact {
