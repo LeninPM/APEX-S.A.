@@ -67,6 +67,68 @@ body {
   color: var(--color-accent);
 }
 
+.nav-item-dropdown {
+  position: relative;
+}
+
+.dropdown-trigger {
+  position: relative;
+  padding-right: 1.5rem !important;
+}
+
+.dropdown-trigger::after {
+  content: '▼';
+  font-size: 0.8em;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--color-primary);
+  min-width: 200px;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.nav-item-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  margin: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-menu li:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a {
+  padding: 0.75rem 1rem;
+  display: block;
+  color: var(--color-light);
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+  background-color: var(--color-accent);
+  color: var(--color-light);
+}
+
+
+
 .menu-toggle {
   display: none;
 }
@@ -421,10 +483,26 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .instagram-feed__gallery {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      padding: 0 10px;
+  .dropdown-menu {
+      position: static;
+      background-color: rgba(255, 255, 255, 0.1);
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      box-shadow: none;
+      display: none;
+  }
+
+  .nav-item-dropdown.active .dropdown-menu {
+      display: block;
+  }
+
+  .dropdown-menu a {
+      padding-left: 2rem;
+  }
+
+  .dropdown-trigger::after {
+      right: 1rem;
   }
 }
 

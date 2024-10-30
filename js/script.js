@@ -2,17 +2,31 @@
 document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    const dropdownTrigger = document.querySelector('.dropdown-trigger');
 
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
     });
 
-    // Close menu when a link is clicked
+    // Cerrar menú cuando se hace clic en un enlace
     document.querySelectorAll('.nav-menu a').forEach(link => {
         link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
+            if (window.innerWidth <= 768) {
+                navMenu.classList.remove('active');
+            }
         });
     });
+});
+
+    // Manejo del dropdown en móviles
+    dropdownTrigger.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            const dropdownParent = e.target.parentElement;
+            dropdownParent.classList.toggle('active');
+        }
+    });
+
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -87,4 +101,3 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         alert('Chat functionality coming soon!');
     });
-});
